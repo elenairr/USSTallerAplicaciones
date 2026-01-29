@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{uci_bank_marketing}
+S.~Moro, P.~Cortez, and P.~Rita, ``Bank marketing dataset.'' UCI Machine
+  Learning Repository, 2014.
+\newblock DOI: 10.24432/C5K306.
+
+\bibitem{crisp_dm}
+P.~Chapman, J.~Clinton, R.~Kerber, T.~Khabaza, T.~Reinartz, C.~Shearer, and
+  R.~Wirth, ``Crisp-dm 1.0: Step-by-step data mining guide,'' {\em SPSS Inc},
+  vol.~9, pp.~1--73, 2000.
+
+\bibitem{safarkhani2021}
+F.~Safarkhani and S.~Moro, ``Improving the accuracy of predicting bank
+  depositor's behavior using a decision tree,'' {\em Applied Sciences},
+  vol.~11, p.~9016, September 2021.
+
+\bibitem{moro2014}
+S.~Moro, P.~Cortez, and P.~Rita, ``A data-driven approach to predict the
+  success of bank telemarketing,'' {\em Decision Support Systems}, vol.~62,
+  pp.~22--31, 2014.
+
+\bibitem{rahman2018}
+A.~Rahman and M.~N.~A. Khan, ``A classification based model to assess customer
+  behavior in banking sector,'' {\em Engineering, Technology \& Applied Science
+  Research}, vol.~8, pp.~2949--2953, June 2018.
+
+\bibitem{akkaya2024}
+E.~Akkaya and S.~Turgay, ``Unveiling the power: A comparative analysis of data
+  mining tools through decision tree classification on the bank marketing
+  dataset,'' {\em WSEAS Transactions on Computers}, vol.~23, pp.~95--105, 2024.
+
+\bibitem{yan2025}
+X.~Yan, Y.~Li, F.~Nie, and R.~Li, ``Bank customer segmentation and marketing
+  strategies based on improved dbscan algorithm,'' {\em Applied Sciences},
+  vol.~15, p.~3138, March 2025.
+
+\bibitem{agrawal1994fast}
+R.~Agrawal and R.~Srikant, ``Fast algorithms for mining association rules,''
+  vol.~1215, pp.~487--499, 1994.
+
+\end{thebibliography}

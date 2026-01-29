@@ -1,0 +1,14 @@
+# Environments
+.venv/
+env/
+venv/
+__pycache__/
+
+# Mac
+.DS_Store
+
+# Data (if huge, though user wanted to upload streamlit app, which needs the joblibs)
+# We keep the joblibs for streamlit because they are small enough (5MB)
+
+# IDE
+.vscode/
