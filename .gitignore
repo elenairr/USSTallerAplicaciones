@@ -3,12 +3,20 @@
 env/
 venv/
 __pycache__/
+*.pyc
 
 # Mac
 .DS_Store
 
-# Data (if huge, though user wanted to upload streamlit app, which needs the joblibs)
-# We keep the joblibs for streamlit because they are small enough (5MB)
-
 # IDE
 .vscode/
+
+# Backups y archivos temporales (no necesarios para entrega)
+backups/
+tableau_resources/
+scripts/
+test.hyper
+*.Zone.Identifier
+
+# Data huge files (mantener solo procesados pequeños)
+data/raw/
