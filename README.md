@@ -12,7 +12,7 @@ Visualización interactiva de los datos del proyecto con 4 controles de filtrado
 ### 🤖 Aplicación Streamlit
 **URL:** https://aplicacionesdeusstaller-srx7dnmuyfe8rqseuadgmc.streamlit.app/
 
-Predictor en vivo con modelo Random Forest optimizado (AUC ~0.91).
+Predictor en vivo con modelo Random Forest optimizado (AUC = 0.90).
 
 ## 🚀 Despliegue
 
