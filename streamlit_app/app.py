@@ -52,7 +52,7 @@ with tab1:
         
     with col2:
         st.subheader("Datos Financieros")
-        balance = st.number_input("Balance Anual Promedio (€)", value=0)
+        balance = st.number_input("Balance Anual Promedio (€)", value=0, step=100, min_value=-10000, max_value=200000)
         default = st.selectbox("¿Tiene crédito en default?", ['no', 'yes'])
         housing = st.selectbox("¿Tiene préstamo hipotecario?", ['yes', 'no'])
         loan = st.selectbox("¿Tiene préstamo personal?", ['no', 'yes'])
