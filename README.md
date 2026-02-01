@@ -1,6 +1,18 @@
-# Bank Marketing Prediction - Streamlit App
+# Bank Marketing Prediction - Proyecto Final
 
 Aplicación web para predecir la suscripción de clientes a depósitos a plazo utilizando Machine Learning.
+
+## 🌐 Enlaces en Producción
+
+### 📊 Dashboard de Tableau Public
+**URL:** https://public.tableau.com/app/profile/usstalleraplicaciones/viz/UCI_Bank_Marketing/InsightsCampaa
+
+Visualización interactiva de los datos del proyecto con 4 controles de filtrado y análisis de insights clave.
+
+### 🤖 Aplicación Streamlit
+**URL:** https://usstalleraplicaciones.streamlit.app/
+
+Predictor en vivo con modelo Random Forest optimizado (AUC ~0.91).
 
 ## 🚀 Despliegue
 
