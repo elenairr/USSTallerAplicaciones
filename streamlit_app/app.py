@@ -105,44 +105,26 @@ with tab1:
     
     st.divider()
     
-    # Obtener valores actuales del formulario
-    age = st.session_state.get('age', 30)
-    job = st.session_state.get('job', 'management')
-    marital = st.session_state.get('marital', 'married')
-    education = st.session_state.get('education', 'tertiary')
-    balance = st.session_state.get('balance', 0)
-    default = st.session_state.get('default', 'no')
-    housing = st.session_state.get('housing', 'yes')
-    loan = st.session_state.get('loan', 'no')
-    contact = st.session_state.get('contact', 'cellular')
-    day = st.session_state.get('day', 15)
-    month = st.session_state.get('month', 'jan')
-    duration = st.session_state.get('duration', 120)
-    campaign = st.session_state.get('campaign', 1)
-    pdays = st.session_state.get('pdays', -1)
-    previous = st.session_state.get('previous', 0)
-    poutcome = st.session_state.get('poutcome', 'unknown')
-    
     # Botón de predicción
     if st.button("🔮 Predecir Suscripción", type="primary", use_container_width=True):
-        # Create DataFrame
+        # Obtener valores del session_state
         input_data = pd.DataFrame({
-            'age': [age],
-            'job': [job],
-            'marital': [marital],
-            'education': [education],
-            'default': [default],
-            'balance': [balance],
-            'housing': [housing],
-            'loan': [loan],
-            'contact': [contact],
-            'day_of_week': [day],
-            'month': [month],
-            'duration': [duration],
-            'campaign': [campaign],
-            'pdays': [pdays],
-            'previous': [previous],
-            'poutcome': [poutcome]
+            'age': [st.session_state.get('age', 30)],
+            'job': [st.session_state.get('job', 'management')],
+            'marital': [st.session_state.get('marital', 'married')],
+            'education': [st.session_state.get('education', 'tertiary')],
+            'default': [st.session_state.get('default', 'no')],
+            'balance': [st.session_state.get('balance', 0)],
+            'housing': [st.session_state.get('housing', 'yes')],
+            'loan': [st.session_state.get('loan', 'no')],
+            'contact': [st.session_state.get('contact', 'cellular')],
+            'day_of_week': [st.session_state.get('day', 15)],
+            'month': [st.session_state.get('month', 'jan')],
+            'duration': [st.session_state.get('duration', 120)],
+            'campaign': [st.session_state.get('campaign', 1)],
+            'pdays': [st.session_state.get('pdays', -1)],
+            'previous': [st.session_state.get('previous', 0)],
+            'poutcome': [st.session_state.get('poutcome', 'unknown')]
         })
         
         # Preprocess
@@ -171,42 +153,34 @@ with tab1:
     
     with col1:
         st.markdown("**Datos del Cliente**")
-        age = st.number_input("Edad", min_value=18, max_value=100, value=age, key="form_age")
-        job = st.selectbox("Trabajo", ['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'], index=['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'].index(job), key="form_job")
-        marital = st.selectbox("Estado Civil", ['married', 'single', 'divorced'], index=['married', 'single', 'divorced'].index(marital), key="form_marital")
-        education = st.selectbox("Educación", ['tertiary', 'secondary', 'primary', 'unknown'], index=['tertiary', 'secondary', 'primary', 'unknown'].index(education), key="form_education")
+        st.number_input("Edad", min_value=18, max_value=100, value=st.session_state.get('age', 30), key="age")
+        st.selectbox("Trabajo", ['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'], index=['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'].index(st.session_state.get('job', 'management')), key="job")
+        st.selectbox("Estado Civil", ['married', 'single', 'divorced'], index=['married', 'single', 'divorced'].index(st.session_state.get('marital', 'married')), key="marital")
+        st.selectbox("Educación", ['tertiary', 'secondary', 'primary', 'unknown'], index=['tertiary', 'secondary', 'primary', 'unknown'].index(st.session_state.get('education', 'tertiary')), key="education")
         
     with col2:
         st.markdown("**Datos Financieros**")
-        balance = st.number_input("Balance Anual Promedio (€)", value=balance, step=100, min_value=-10000, max_value=200000, key="form_balance")
-        default = st.selectbox("¿Tiene crédito en default?", ['no', 'yes'], index=['no', 'yes'].index(default), key="form_default")
-        housing = st.selectbox("¿Tiene préstamo hipotecario?", ['yes', 'no'], index=['yes', 'no'].index(housing), key="form_housing")
-        loan = st.selectbox("¿Tiene préstamo personal?", ['no', 'yes'], index=['no', 'yes'].index(loan), key="form_loan")
+        st.number_input("Balance Anual Promedio (€)", value=st.session_state.get('balance', 0), step=100, min_value=-10000, max_value=200000, key="balance")
+        st.selectbox("¿Tiene crédito en default?", ['no', 'yes'], index=['no', 'yes'].index(st.session_state.get('default', 'no')), key="default")
+        st.selectbox("¿Tiene préstamo hipotecario?", ['yes', 'no'], index=['yes', 'no'].index(st.session_state.get('housing', 'yes')), key="housing")
+        st.selectbox("¿Tiene préstamo personal?", ['no', 'yes'], index=['no', 'yes'].index(st.session_state.get('loan', 'no')), key="loan")
         
     with col3:
         st.markdown("**Datos de Contacto**")
-        contact = st.selectbox("Tipo de Contacto", ['cellular', 'telephone', 'unknown'], index=['cellular', 'telephone', 'unknown'].index(contact), key="form_contact")
-        day = st.slider("Día del mes (último contacto)", 1, 31, day, key="form_day")
-        month = st.selectbox("Mes de contacto", ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'], index=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'].index(month), key="form_month")
-        duration = st.number_input("Duración última llamada (segundos)", min_value=0, value=duration, key="form_duration")
+        st.selectbox("Tipo de Contacto", ['cellular', 'telephone', 'unknown'], index=['cellular', 'telephone', 'unknown'].index(st.session_state.get('contact', 'cellular')), key="contact")
+        st.slider("Día del mes (último contacto)", 1, 31, st.session_state.get('day', 15), key="day")
+        st.selectbox("Mes de contacto", ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'], index=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'].index(st.session_state.get('month', 'jan')), key="month")
+        st.number_input("Duración última llamada (segundos)", min_value=0, value=st.session_state.get('duration', 120), key="duration")
     
     st.markdown("**Historial de Campaña**")
     c1, c2, c3 = st.columns(3)
     with c1:
-        campaign = st.number_input("Número de contactos en esta campaña", min_value=1, value=campaign, key="form_campaign")
+        st.number_input("Número de contactos en esta campaña", min_value=1, value=st.session_state.get('campaign', 1), key="campaign")
     with c2:
-        pdays = st.number_input("Días desde último contacto (-1 si nunca)", value=pdays, key="form_pdays")
+        st.number_input("Días desde último contacto (-1 si nunca)", value=st.session_state.get('pdays', -1), key="pdays")
     with c3:
-        previous = st.number_input("Número de contactos previos", min_value=0, value=previous, key="form_previous")
-        poutcome = st.selectbox("Resultado campaña anterior", ['unknown', 'failure', 'other', 'success'], index=['unknown', 'failure', 'other', 'success'].index(poutcome), key="form_poutcome")
-    
-    # Actualizar session_state con valores del formulario
-    st.session_state.update({
-        'age': age, 'job': job, 'marital': marital, 'education': education,
-        'balance': balance, 'default': default, 'housing': housing, 'loan': loan,
-        'contact': contact, 'day': day, 'month': month, 'duration': duration,
-        'campaign': campaign, 'pdays': pdays, 'previous': previous, 'poutcome': poutcome
-    })
+        st.number_input("Número de contactos previos", min_value=0, value=st.session_state.get('previous', 0), key="previous")
+        st.selectbox("Resultado campaña anterior", ['unknown', 'failure', 'other', 'success'], index=['unknown', 'failure', 'other', 'success'].index(st.session_state.get('poutcome', 'unknown')), key="poutcome")
 
 with tab2:
     st.header("Métricas de Desempeño del Modelo")
