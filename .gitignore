@@ -11,12 +11,25 @@ __pycache__/
 # IDE
 .vscode/
 
-# Backups y archivos temporales (no necesarios para entrega)
+# Archivos de proyecto NO necesarios para despliegue Streamlit
 backups/
 tableau_resources/
 scripts/
 test.hyper
 *.Zone.Identifier
+data/
+images/
+notebooks/
+presentation/
+report/
+github/
 
-# Data huge files (mantener solo procesados pequeños)
-data/raw/
+# Documentos internos (no parte de la entrega)
+*.pdf
+INSTRUCCIONES_DESPLIEGUE.md
+Instructivo_Tableau.md
+MEJORAS_IMPLEMENTADAS.md
+MarcoEvaluacion*.md
+PlanTrabajo*.md
+ResumenEjecucion*.md
+RevisionBibliografica.md
