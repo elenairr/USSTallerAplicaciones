@@ -41,41 +41,105 @@ tab1, tab2 = st.tabs(["🔮 Predicción en Vivo", "📊 Resultados del Modelo"])
 with tab1:
     st.header("Formulario de Predicción")
     
+    # Ejemplos precargados
+    st.subheader("📋 Prueba con Ejemplos")
+    col_ex1, col_ex2 = st.columns(2)
+    
+    with col_ex1:
+        st.markdown("**Ejemplos de Suscripción (YES)**")
+        if st.button("👤 Estudiante (25 años)", key="ex_yes1"):
+            st.session_state.update({
+                'age': 25, 'job': 'student', 'marital': 'single', 'education': 'tertiary',
+                'balance': 500, 'default': 'no', 'housing': 'no', 'loan': 'no',
+                'contact': 'cellular', 'day': 10, 'month': 'may', 'duration': 450,
+                'campaign': 2, 'pdays': -1, 'previous': 0, 'poutcome': 'unknown'
+            })
+            st.rerun()
+        
+        if st.button("👔 Gerente (42 años)", key="ex_yes2"):
+            st.session_state.update({
+                'age': 42, 'job': 'management', 'marital': 'married', 'education': 'tertiary',
+                'balance': 3500, 'default': 'no', 'housing': 'yes', 'loan': 'no',
+                'contact': 'cellular', 'day': 15, 'month': 'sep', 'duration': 600,
+                'campaign': 1, 'pdays': 180, 'previous': 2, 'poutcome': 'success'
+            })
+            st.rerun()
+        
+        if st.button("🏖️ Jubilado (68 años)", key="ex_yes3"):
+            st.session_state.update({
+                'age': 68, 'job': 'retired', 'marital': 'married', 'education': 'secondary',
+                'balance': 8000, 'default': 'no', 'housing': 'no', 'loan': 'no',
+                'contact': 'cellular', 'day': 20, 'month': 'mar', 'duration': 500,
+                'campaign': 1, 'pdays': -1, 'previous': 0, 'poutcome': 'unknown'
+            })
+            st.rerun()
+    
+    with col_ex2:
+        st.markdown("**Ejemplos de No Suscripción (NO)**")
+        if st.button("🔧 Técnico (28 años)", key="ex_no1"):
+            st.session_state.update({
+                'age': 28, 'job': 'technician', 'marital': 'single', 'education': 'secondary',
+                'balance': -200, 'default': 'no', 'housing': 'yes', 'loan': 'yes',
+                'contact': 'telephone', 'day': 5, 'month': 'may', 'duration': 80,
+                'campaign': 5, 'pdays': -1, 'previous': 0, 'poutcome': 'unknown'
+            })
+            st.rerun()
+        
+        if st.button("👷 Obrero (35 años)", key="ex_no2"):
+            st.session_state.update({
+                'age': 35, 'job': 'blue-collar', 'marital': 'married', 'education': 'primary',
+                'balance': 100, 'default': 'no', 'housing': 'yes', 'loan': 'yes',
+                'contact': 'cellular', 'day': 12, 'month': 'aug', 'duration': 120,
+                'campaign': 3, 'pdays': 999, 'previous': 1, 'poutcome': 'failure'
+            })
+            st.rerun()
+        
+        if st.button("🏢 Administrativo (50 años)", key="ex_no3"):
+            st.session_state.update({
+                'age': 50, 'job': 'admin.', 'marital': 'divorced', 'education': 'secondary',
+                'balance': 1000, 'default': 'no', 'housing': 'yes', 'loan': 'no',
+                'contact': 'unknown', 'day': 8, 'month': 'nov', 'duration': 60,
+                'campaign': 8, 'pdays': -1, 'previous': 0, 'poutcome': 'unknown'
+            })
+            st.rerun()
+    
+    st.divider()
+    
     col1, col2, col3 = st.columns(3)
     
     with col1:
         st.subheader("Datos del Cliente")
-        age = st.number_input("Edad", min_value=18, max_value=100, value=30)
-        job = st.selectbox("Trabajo", ['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'])
-        marital = st.selectbox("Estado Civil", ['married', 'single', 'divorced'])
-        education = st.selectbox("Educación", ['tertiary', 'secondary', 'primary', 'unknown'])
+        age = st.number_input("Edad", min_value=18, max_value=100, value=st.session_state.get('age', 30))
+        job = st.selectbox("Trabajo", ['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'], index=['management', 'technician', 'entrepreneur', 'blue-collar', 'retired', 'admin.', 'services', 'self-employed', 'unemployed', 'housemaid', 'student', 'unknown'].index(st.session_state.get('job', 'management')))
+        marital = st.selectbox("Estado Civil", ['married', 'single', 'divorced'], index=['married', 'single', 'divorced'].index(st.session_state.get('marital', 'married')))
+        education = st.selectbox("Educación", ['tertiary', 'secondary', 'primary', 'unknown'], index=['tertiary', 'secondary', 'primary', 'unknown'].index(st.session_state.get('education', 'tertiary')))
         
     with col2:
         st.subheader("Datos Financieros")
-        balance = st.number_input("Balance Anual Promedio (€)", value=0, step=100, min_value=-10000, max_value=200000)
-        default = st.selectbox("¿Tiene crédito en default?", ['no', 'yes'])
-        housing = st.selectbox("¿Tiene préstamo hipotecario?", ['yes', 'no'])
-        loan = st.selectbox("¿Tiene préstamo personal?", ['no', 'yes'])
+        balance = st.number_input("Balance Anual Promedio (€)", value=st.session_state.get('balance', 0), step=100, min_value=-10000, max_value=200000)
+        default = st.selectbox("¿Tiene crédito en default?", ['no', 'yes'], index=['no', 'yes'].index(st.session_state.get('default', 'no')))
+        housing = st.selectbox("¿Tiene préstamo hipotecario?", ['yes', 'no'], index=['yes', 'no'].index(st.session_state.get('housing', 'yes')))
+        loan = st.selectbox("¿Tiene préstamo personal?", ['no', 'yes'], index=['no', 'yes'].index(st.session_state.get('loan', 'no')))
         
     with col3:
         st.subheader("Datos de Contacto")
-        contact = st.selectbox("Tipo de Contacto", ['cellular', 'telephone', 'unknown'])
-        day = st.slider("Día del mes (último contacto)", 1, 31, 15)
-        month = st.selectbox("Mes de contacto", ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])
-        duration = st.number_input("Duración última llamada (segundos)", min_value=0, value=120)
+        contact = st.selectbox("Tipo de Contacto", ['cellular', 'telephone', 'unknown'], index=['cellular', 'telephone', 'unknown'].index(st.session_state.get('contact', 'cellular')))
+        day = st.slider("Día del mes (último contacto)", 1, 31, st.session_state.get('day', 15))
+        month = st.selectbox("Mes de contacto", ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'], index=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'].index(st.session_state.get('month', 'jan')))
+        duration = st.number_input("Duración última llamada (segundos)", min_value=0, value=st.session_state.get('duration', 120))
     
     st.subheader("Historial de Campaña")
     c1, c2, c3 = st.columns(3)
     with c1:
-        campaign = st.number_input("Número de contactos en esta campaña", min_value=1, value=1)
+        campaign = st.number_input("Número de contactos en esta campaña", min_value=1, value=st.session_state.get('campaign', 1))
     with c2:
-        pdays = st.number_input("Días desde último contacto (-1 si nunca)", value=-1)
+        pdays = st.number_input("Días desde último contacto (-1 si nunca)", value=st.session_state.get('pdays', -1))
     with c3:
-        previous = st.number_input("Número de contactos previos", min_value=0, value=0)
-        poutcome = st.selectbox("Resultado campaña anterior", ['unknown', 'failure', 'other', 'success'])
+        previous = st.number_input("Número de contactos previos", min_value=0, value=st.session_state.get('previous', 0))
+        poutcome = st.selectbox("Resultado campaña anterior", ['unknown', 'failure', 'other', 'success'], index=['unknown', 'failure', 'other', 'success'].index(st.session_state.get('poutcome', 'unknown')))
 
     # Prediction Logic
-    if st.button("Predecir Suscripción", type="primary"):
+    if st.button("🔮 Predecir Suscripción", type="primary"):
         # Create DataFrame
         input_data = pd.DataFrame({
             'age': [age],
