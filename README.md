@@ -10,7 +10,7 @@ Aplicación web para predecir la suscripción de clientes a depósitos a plazo u
 Visualización interactiva de los datos del proyecto con 4 controles de filtrado y análisis de insights clave.
 
 ### 🤖 Aplicación Streamlit
-**URL:** https://usstalleraplicaciones.streamlit.app/
+**URL:** https://aplicacionesdeusstaller-srx7dnmuyfe8rqseuadgmc.streamlit.app/
 
 Predictor en vivo con modelo Random Forest optimizado (AUC ~0.91).
 
